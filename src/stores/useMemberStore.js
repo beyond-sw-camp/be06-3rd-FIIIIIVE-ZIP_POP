@@ -1,14 +1,20 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
-const backend = "http://localhost:8080/api/v1/member";
-// 전역 저장소 생성
+axios.defaults.withCredentials = true;
+const backend = "http://localhost:8080/api/v1";
+
 export const useMemberStore = defineStore("member", {
-    state: () => ({ isLoggedIn: false }),
-    persist: { storage: sessionStorage, },
+    state: () => ({
+        isLoggedIn: false,
+        favoriteStores: [], // 찜한 팝업 목록을 저장하는 상태
+    }),
+    persist: {
+        storage: sessionStorage,
+    },
     actions: {
         async login(member) {
-            let response = await axios.post(backend + "/login", member);
+            let response = await axios.post(backend + "/member/login", member);
             if (response.status === 200) {
                 this.isLoggedIn = true;
                 return true;
@@ -16,6 +22,8 @@ export const useMemberStore = defineStore("member", {
                 return false;
             }
         },
-        logout() { this.isLoggedIn = false; },
+        logout() {
+            this.isLoggedIn = false;
+        },
     },
 });

@@ -43,12 +43,26 @@
 </template>
 
 <script>
+import { useMemberStore } from '/src/stores/useMemberStore';
+
 export default {
     name: "WishPopupComponent",
-    data() {
-        return {};
-    }
-}
+    computed: {
+        favoriteStores() {
+            const store = useMemberStore();
+            return store.favoriteStores;
+        },
+    },
+    mounted() {
+        const store = useMemberStore();
+        store.fetchFavoriteStores(); // 컴포넌트가 마운트될 때 데이터 가져오기
+    },
+    methods: {
+        goToMain() {
+            this.$router.push("/"); // 메인 페이지로 이동
+        },
+    },
+};
 </script>
 
 <style scoped>

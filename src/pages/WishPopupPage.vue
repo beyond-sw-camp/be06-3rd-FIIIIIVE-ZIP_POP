@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import WishPopupComponent from '@/components/mypage/WishPopupComponent.vue';
+import WishPopupComponent from '@/components/customermypage/WishPopupComponent.vue';
 
 export default {
     name: "WishPopupPage",

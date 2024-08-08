@@ -9,21 +9,14 @@
             </div><!---->
         </div>
         <div data-v-47a56272="" data-v-1eaba17a="" class="actions pro-bucket-actions fixed">
-            <div data-v-47a56272="" class="all-check-wrapper"><input data-v-47a56272="" id="all-check" name="allCheck"
-                    type="checkbox" class="all-check"><label data-v-47a56272="" for="all-check"><span data-v-47a56272=""
-                        class="label-text">전체 선택</span></label>
-            </div>
-            <div data-v-47a56272="" class="delete">선택 항목 삭제</div><!---->
+            <div data-v-47a56272="" class="delete">항목</div><!---->
         </div>
     </div>
 
     <div data-v-1eaba17a="" class="top-desktop">
         <div data-v-47a56272="" data-v-1eaba17a="" class="actions">
-            <div data-v-47a56272="" class="all-check-wrapper"><input data-v-47a56272="" id="all-check" name="allCheck"
-                    type="checkbox" class="all-check"><label data-v-47a56272="" for="all-check"><span data-v-47a56272=""
-                        class="label-text">전체 선택</span></label>
-            </div>
-            <div data-v-47a56272="" class="delete">선택 항목 삭제</div><!---->
+
+            <div data-v-47a56272="" class="delete">항목</div><!---->
         </div>
     </div>
 

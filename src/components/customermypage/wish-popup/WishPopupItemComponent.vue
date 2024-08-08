@@ -3,14 +3,13 @@
         <div data-v-11ae1556="" class="d-flex">
             <div data-v-11ae1556="" class="pro-info text-truncate">
                 <div data-v-11ae1556="" class="pro-name-wrapper">
-                    <span data-v-11ae1556="" class="checked"></span>
                     <h5 data-v-11ae1556="" class="pro-name text-truncate">{{ store.storeName }}</h5>
                 </div>
                 <p data-v-11ae1556="" class="pro-introduction text-truncate">{{ store.storeContent }}</p>
                 <div data-v-959ba008="" data-v-11ae1556="" class="profile-badges">
                     <div data-v-959ba008="" class="review-rate">
                         <img data-v-959ba008="" />
-                        <span data-v-959ba008="" class="rate">찜 {{ store.likeCount }}</span>
+                        <span data-v-959ba008="" class="rate">좋아요 {{ store.likeCount }}</span>
                         <span data-v-959ba008="" class="count">{{ store.category }}</span>
                     </div>
                     <span data-v-959ba008="" class="badge-item"> {{ store.storeAddress }}</span>
@@ -24,10 +23,13 @@
                 </div>
             </div>
         </div>
-        <div data-v-11ae1556="" class="pro-extra-info">
-            <span data-v-11ae1556="">{{ store.storeStartDate }}</span>
-            <span data-v-11ae1556="" class="avg-response-time">{{ store.storeEndDate }}</span>
+        <div class="pro-extra-info">
+            <span>기간 : {{ store.storeStartDate }} ~ </span>
+            <span class="avg-response-time">{{ store.storeEndDate }}</span>
         </div>
+
+        <button @click="deleteFavorite(store.storeIdx)" class="btn-delete">찜 취소</button>
+
     </div>
 </template>
 
@@ -40,8 +42,24 @@ export default {
             type: Object,
             required: true
         }
+    },
+    methods: {
+        deleteFavorite(storeIdx) {
+            // 부모 컴포넌트로 storeIdx 전달
+            this.$emit('delete-favorite', storeIdx);
+        }
     }
 }
 </script>
 
-<style></style>
+<style>
+.btn-delete {
+    margin-top: 7px;
+    padding: 1px 10px;
+    background-color: #00c7ae;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+</style>

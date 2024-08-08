@@ -8,7 +8,7 @@
             </div>
 
             <header class="sub-header-desktop" data-v-1eaba17a="">
-                <h1 class="heading-title" data-v-1eaba17a="">찜한 고수</h1>
+                <h1 class="heading-title" data-v-1eaba17a="">찜한 팝업</h1>
                 <h3 class="sub-title" data-v-1eaba17a=""></h3>
             </header>
 

@@ -7,15 +7,7 @@ import LoginComponent from '@/components/login/LoginComponent.vue';
 
 export default {
     name: "LoginPage",
-    data() {
-        return {
-        }
-    },
-    methods: {
-    },
-    components: {
-        LoginComponent,
-    },
+    components: { LoginComponent, },
 }
 </script>
 

@@ -1,24 +1,14 @@
 <template>
-    
     <CartComponent></CartComponent>
 </template>
 
 <script>
-import CartComponent from '@/components/Cart/CartComponent.vue';
-
-
+import CartComponent from '@/components/cart/CartComponent.vue';
 export default {
     name: "CartPage",
-    data() {
-        return {
-        }
-    },
-    methods: {
-    },
-    components: {
-        CartComponent,
-    },
+    components: { CartComponent, },
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

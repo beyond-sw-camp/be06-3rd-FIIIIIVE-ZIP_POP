@@ -3,9 +3,8 @@
 </template>
 
 <script>
-
-export default {
-    name: "SignupPage",
+export default { 
+     name: "SignupPage"
 }
 </script>
 

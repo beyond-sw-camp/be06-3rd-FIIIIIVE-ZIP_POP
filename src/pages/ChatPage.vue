@@ -1,21 +1,15 @@
-
 <template>
-    <div id="chat-page">
-      <main-chat-component></main-chat-component>
-    </div>
-  </template>
-  
-  <script>
-  import MainChatComponent from '@/components/chat/MainChatComponent.vue';
-  
-  export default {
-    components: {
-      MainChatComponent
-    }
-  };
-  </script>
-  
-  <style scoped>
+      <ChatComponent></ChatComponent>
+</template>
 
-  </style>
+<script>
+import ChatComponent from '@/components/chat/ChatComponent.vue';
+export default {
+  name: "ChatPage",
+  components: { ChatComponent }
+};
+</script>
+
+<style scoped>
+</style>
   

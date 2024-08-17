@@ -1,18 +1,19 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-import { backend } from "@/const";
+import { backendUrl } from "@/const";
 
 axios.defaults.withCredentials = true;
 // 전역 저장소 생성
 export const usePostStore = defineStore("post", {
     state: () => ({
+        data: {},
         dataList: [],
      }),
     persist: { storage: sessionStorage, },
     actions: {
         async searchAll() {
             try {
-                let response = await axios.get(backend + "/post/search-all?page=0&size=10",);
+                let response = await axios.get(backendUrl + "/post/search-all?page=0&size=10",);
                 if (response.status === 200) {
                     this.dataList = response.data.result;
                 } else {
@@ -26,7 +27,7 @@ export const usePostStore = defineStore("post", {
         async create(formData) {
             try {
                 let response = await axios.post( 
-                    backend + "/register", formData,
+                    backendUrl + "/register", formData,
                     { headers: { "Content-Type": "multipart/form-data", }, },
                     { withCredentials: true }
                 );

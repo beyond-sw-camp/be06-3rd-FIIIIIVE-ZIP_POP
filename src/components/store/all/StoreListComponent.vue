@@ -1,16 +1,16 @@
 <template>
   <div id="layout">
-    <PopupItemComponent v-for="(popup, index) in popupstoreStore.dataList.content" :key="index" :popup="popup" />
+    <StoreListItemComponent v-for="(popup, index) in popupstoreStore.dataList.content" :key="index" :popup="popup" />
   </div>
 </template>
 
 <script>
-import PopupItemComponent from './PopupItemComponent.vue';
 import { usePopupStore } from '@/stores/usePopupStore';
 import { mapStores } from 'pinia';
+import StoreListItemComponent from './StoreListItemComponent.vue';
 export default {
-  name: "PostListComponent",
-  components: { PopupItemComponent },
+  name: "StoreListComponent",
+  components: { StoreListItemComponent },
   computed: { ...mapStores(usePopupStore) },
   mounted() { this.popupstoreStore.searchAll(); },
 }

@@ -1,7 +1,7 @@
 <template>
   <header id="app-header" class="global-header hide-border-bottom" data-v-8cc44300="">
     <div data-v-26153660="" data-v-8cc44300="" class="global-navigation-bar">
-      <!-- 모바일 헤더 -->
+      <!-- 모바일 헤더
       <section data-v-26153660="" class="mobile-header d-lg-none d-xl-none">
         <div data-v-26153660="" class="col-4 mobile-header-col left vue-portal-target">
           <img data-v-26153660="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIvPgogICAgICAgIDxwYXRoIGQ9Ik00LjUgNmgxNW0tMTUgNmgxNW0tMTUgNmgxNSIgc3Ryb2tlPSIjMkQyRDJEIiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" data-testid="side-nav-menu-icon" alt="네비게이션 메뉴 아이콘">
@@ -64,20 +64,21 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
       <!-- 데스크탑 헤더 -->
       <section data-v-26153660="" class="d-none d-lg-block d-xl-block">
         <div data-v-26153660="" class="desktop-header">
           <div data-v-26153660="" class="left-section">
             <div data-v-26153660="" class="logo">
               <a data-v-26153660="" href="/" class="">
-                <img data-v-26153660="" src="https://assets.cdn.soomgo.com/icons/logo/navigation_logo.svg" alt="숨고, 숨은고수">
+                <img data-v-26153660="" 
+                src="../../assets/img/zippopbanner.png">
               </a>
             </div>
             <nav data-v-26153660="">
               <ul data-v-26153660="" class="nav-list">
                 <li data-v-26153660="" class="nav-item left-section-item">
-                  <a data-v-26153660="" href="/search/pro?from=web_gnb" class="gnb-link">
+                  <a data-v-26153660="" href="/" class="gnb-link">
                     <span data-v-26153660="">팝업찾기</span>
                   </a>
                 </li>
@@ -87,7 +88,7 @@
                   </a>
                 </li>
                 <li data-v-26153660="" class="nav-item left-section-item">
-                  <a data-v-26153660="" href="/community/post-all" class="gnb-link">
+                  <a data-v-26153660="" href="/post/post-all" class="gnb-link">
                     <span data-v-26153660="">커뮤니티</span>
                   </a>
                 </li>
@@ -96,14 +97,16 @@
           </div>
           <div data-v-26153660="" class="center-section"></div>
           <!-- 로그인 안함  -->
-          <div v-show="userStatus == false" data-v-26153660="" class="right-section">
+          <div v-if="this.memberStore.isLoggedIn == false" data-v-26153660="" class="right-section">
             <nav data-v-26153660="">
               <ul data-v-26153660="" class="nav-list">
+                <!-- 로그인 -->
                 <li data-v-26153660="" class="n av-item right-section-item">
                   <span data-v-26153660="">
                     <router-link to="/login">로그인</router-link>
                   </span>
                 </li>
+                <!-- 회원가입 -->
                 <li data-v-26153660="" class="nav-item right-section-item">
                   <span data-v-26153660="">
                     <router-link to="/signup/customer">회원가입</router-link>
@@ -111,37 +114,44 @@
                 </li>
               </ul>
             </nav>
+            <!-- 기업가입 -->
             <button data-v-26153660="" type="button" class="btn pro-signup-btn right-section-item btn-primary">
               <router-link to="/signup/company">기업가입</router-link>
             </button>
           </div>
-          <!-- 로그인 함 -->
-          <div v-show="userStatus == true" data-v-26153660="" class="right-section">
+          <!-- 로그인 (고객)-->
+          <div v-if="this.memberStore.isLoggedIn == true && this.memberStore.userRole == 'ROLE_CUSTOMER'" data-v-26153660="" class="right-section">
             <nav data-v-26153660="">
               <ul data-v-26153660="" class="nav-list">
+                <!-- 마이페이지 -->
                 <li data-v-26153660="" class="nav-item right-section-item">
-                  <a @click="redirectToMypage" class="gnb-link">
-                    <span data-v-26153660="">마이페이지</span>
-                  </a>
+                    <a data-v-26153660="" href="/mypage" class="gnb-link">
+                        <span data-v-26153660="">마이페이지</span>
+                    </a>
                 </li>
+                <!-- 장바구니 -->
                 <li data-v-26153660="" class="nav-item right-section-item">
                     <a data-v-26153660="" href="/cart" class="gnb-link">
                         <span data-v-26153660="">장바구니</span>
                     </a>
                 </li>
+                <!-- 찜함팝업 -->
                 <li data-v-26153660="" class="nav-item right-section-item">
-                  <a data-v-26153660="" href="/wish_popup" class="gnb-link">
+                  <a data-v-26153660="" href="/wish" class="gnb-link">
                     <span data-v-26153660="">찜한팝업</span>
                   </a>
                 </li>
+                <!-- 채팅 -->
                 <li data-v-26153660="" class="nav-item right-section-item">
                   <a data-v-26153660="" href="/chats" class="gnb-link">
                     <span data-v-26153660="">채팅</span>
                   </a>
                 </li>
-                <button v-if="userStatus" @click="handleLogout" data-v-26153660="" class="btn pro-signup-btn right-section-item btn-primary"> 로그아웃 </button>
+                <!-- 로그아웃 -->
+                <button @click="handleLogout" data-v-26153660="" class="btn pro-signup-btn right-section-item btn-primary"> 로그아웃 </button>
               </ul>
             </nav>
+            <!-- 유저 프로필 사진, 모달
             <div data-v-35a09b99="" data-v-26153660="" class="usermenu user-menu right-section-item">
               <div data-v-35a09b99="" class="usermenu-button">
                 <div data-v-29d5164e="" data-v-35a09b99="" class="user-profile-picture">
@@ -150,13 +160,38 @@
                 </div>
                 <img data-v-35a09b99="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgxMnYxMkgweiIvPgogICAgICAgIDxwYXRoIHN0cm9rZT0iIzg4OCIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTEwIDQgNiA4IDIgNCIvPgogICAgPC9nPgo8L3N2Zz4K">
               </div>
-            </div>
+            </div> -->
+          </div>
+          <!-- 로그인 (기업)-->
+          <div v-if="this.memberStore.isLoggedIn == true && this.memberStore.userRole == 'ROLE_COMPANY'" data-v-26153660="" class="right-section">
+            <nav data-v-26153660="">
+              <ul data-v-26153660="" class="nav-list">
+                <!-- 마이페이지 -->
+                <li data-v-26153660="" class="nav-item right-section-item">
+                    <a data-v-26153660="" href="/mypage" class="gnb-link">
+                        <span data-v-26153660="">관리페이지</span>
+                    </a>
+                </li>
+                <!-- 로그아웃 -->
+                <button @click="handleLogout" data-v-26153660="" class="btn pro-signup-btn right-section-item btn-primary"> 로그아웃 </button>
+              </ul>
+            </nav>
+            <!-- 유저 프로필 사진, 모달
+            <div data-v-35a09b99="" data-v-26153660="" class="usermenu user-menu right-section-item">
+              <div data-v-35a09b99="" class="usermenu-button">
+                <div data-v-29d5164e="" data-v-35a09b99="" class="user-profile-picture">
+                  <div data-v-29d5164e="" data-name="image" class="" data-src="https://static.cdn.soomgo.com/upload/profile-default/soomgo_130.jpg?h=320&amp;w=320&amp;webp=1" lazy="loaded" style="background-image: url(&quot;https://static.cdn.soomgo.com/upload/profile-default/soomgo_130.jpg?h=320&amp;w=320&amp;webp=1&quot;);">
+                  </div>
+                </div>
+                <img data-v-35a09b99="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMGgxMnYxMkgweiIvPgogICAgICAgIDxwYXRoIHN0cm9rZT0iIzg4OCIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTEwIDQgNiA4IDIgNCIvPgogICAgPC9nPgo8L3N2Zz4K">
+              </div>
+            </div> -->
           </div>
         </div>
       </section>
     </div>
   </header>
-  <div id="app-sticky-nav" class="vue-portal-target"></div>
+  <!-- <div id="app-sticky-nav" class="vue-portal-target"></div> -->
 </template>
 
 
@@ -166,40 +201,12 @@ import { mapStores } from 'pinia';
 
 export default {
   name: "HeaderComponent",
-  props: ["userStatus"],
-  computed: {
-    ...mapStores(useMemberStore)
-  },
+  computed: { ...mapStores(useMemberStore) },
   methods: {
     async handleLogout() {
-      try {
-        if (await this.memberStore.logout()) {
-          this.$router.push('/')
-        }
-      } catch (error) {
-        console.error("Logout error:", error);
-      }
+        const result = await this.memberStore.logout() 
+        if(result){ this.$router.push('/') }
     },
-    getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-    },
-    redirectToMypage() {
-      const utoken = this.getCookie('UTOKEN');
-      if (utoken) {
-        const userRole = utoken.split('|')[1];
-        if (userRole === 'ROLE_COMPANY') {
-          this.$router.push('/managermypage');
-        } else if (userRole === 'ROLE_CUSTOMER') {
-          this.$router.push('/mypage');
-        } else {
-          this.$router.push('/mypage'); // Default fallback if role is not matched
-        }
-      } else {
-        this.$router.push('/mypage'); // Default fallback if token is not found
-      }
-    }
   }
 }
 </script>

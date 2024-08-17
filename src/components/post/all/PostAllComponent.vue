@@ -1,5 +1,7 @@
 <template>
-
+    <div id="app-body">
+        <div class="community-container container" data-v-c05eb1ae="">
+            <div class="soomgo-life-container" data-v-0352d1b6="" data-v-c05eb1ae="">
         <section id="community" class="community" data-v-4b40be3a="" data-v-0352d1b6="">
           <!-- 헤더 -->
           <div class="observer-container" data-v-71844fb9="" data-v-74db39ba="" data-v-4b40be3a="">
@@ -17,6 +19,9 @@
           <!-- 바디 -->
           <PostListComponent></PostListComponent>
         </section>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

@@ -8,16 +8,14 @@
                     <div class="css-0">
                         <label for="email" class="css-g3x1x2 et8ys2u0">이메일</label>
                         <div class="css-hyxlzm et8ys2u1">
-                            <input id="email" class="css-sn3hoi et8ys2u2" placeholder="example@zippop.com"
-                                maxlength="30" name="email" v-model="email">
+                            <input v-model="member.email" id="email" class="css-sn3hoi et8ys2u2" placeholder="example@zippop.com" maxlength="30" name="email" >
                         </div>
                     </div>
                     <!-- 비밀번호 -->
                     <div class="css-0">
                         <label for="password" class="css-g3x1x2 et8ys2u0">비밀번호</label>
                         <div class="css-hyxlzm et8ys2u1">
-                            <input id="password" class="css-sn3hoi et8ys2u2" placeholder="비밀번호를 입력해주세요"
-                                name="password" type="password" v-model="password">
+                            <input v-model="member.password" id="password" class="css-sn3hoi et8ys2u2" placeholder="비밀번호를 입력해주세요" name="password" type="password" >
                         </div>
                     </div>
                     <!-- 이름 -->
@@ -31,7 +29,7 @@
                     <div class="css-0">
                         <label for="phone_number" class="css-g3x1x2 et8ys2u0">휴대폰 번호</label>
                         <div class="css-hyxlzm et8ys2u1">
-                            <input v-model="member.phone_number" id="phone_number" class="css-sn3hoi et8ys2u2" placeholder="010-1234-5678" maxlength="13" name="phone_number">
+                            <input v-model="member.phoneNumber" id="phone_number" class="css-sn3hoi et8ys2u2" placeholder="010-1234-5678" maxlength="13" name="phone_number">
                         </div>
                     </div>
                     <!-- 주소 -->
@@ -45,7 +43,7 @@
                     <div class="css-0">
                         <label for="crn" class="css-g3x1x2 et8ys2u0">사업자 등록 번호</label>
                         <div class="css-hyxlzm et8ys2u1">
-                            <input required autofocus="" id="crn" class="css-sn3hoi et8ys2u2" placeholder="사업자번호를 입력해주세요" maxlength="12" name="crn" type="text" v-model="crn">
+                            <input v-model="member.crn" required autofocus="" id="crn" class="css-sn3hoi et8ys2u2" placeholder="사업자번호를 입력해주세요" maxlength="12" name="crn" type="text" >
                         </div>
                     </div>
                     <!-- 회원가입 버튼 -->
@@ -76,7 +74,7 @@ export default {
                 email: '',        // 이메일
                 password: '',     // 비밀번호
                 address: '',      // 주소
-                phone_number: '', // 휴대폰 번호
+                phoneNumber: '', // 휴대폰 번호
                 crn: ''           // 사업자번호
             },
         };

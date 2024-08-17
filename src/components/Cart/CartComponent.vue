@@ -1,141 +1,137 @@
 
 <template>
   <div id="app-body">
-    <div class="cart-title-new-layout-wrapper">
-      <div class="cart-navigator" id="cart-navigator"></div>
-      
-      <div class="cart-new-title">장바구니</div>
-      <section class="cart-title-new-layout"></section>
-    </div>
-    <div class="tabs-wrap--with-rds-style">
-      <div class="tabs">
-        <span id="cartItemCount" class="normal-cart" data-item-count="1">구매 정보</span>
-      </div>
-    </div>
-    <div class="shopping-cart-new-layout">
-      <div class="cart-items-container">
-        <table class="cartTable cartTable-v2">
-          <tbody id="cartTable-other" class="cart-bundle-list">
-            <tr v-for="item in cartItems" :key="item.cartIdx">
-              <td class="cart-deal-item__image">
-                <img v-if="item.getPopupGoodsRes.getPopupGoodsImageResList && item.getPopupGoodsRes.getPopupGoodsImageResList.length > 0" 
-                     :src="item.getPopupGoodsRes.getPopupGoodsImageResList[0].imageUrl || '/default_image.jpg'" 
-                     :alt="item.getPopupGoodsRes.productName" 
-                     width="140" 
-                     height="140" />
-                <img v-else src="/default_image.jpg" alt="Default Image" width="140" height="140" />
-              </td>
-              <td class="product-box">
-                <div class="product-name-part">
-                  <div class="product-name-part-content">
-                    <a href="#" class="moveProduct">
-                      <span v-if="item.getPopupGoodsRes" class="product-name">{{ item.getPopupGoodsRes.productName }}</span>
-                      <span v-else class="product-name">상품명 없음</span>
-                    </a>
-                  </div>
-                  <div class="quantity-input-container">
-                    <div class="quantity-input-content">
-                      <div class="quantity-input-icon minus" @click="adjustCartCount(item, -1)"></div>
-                      <input :value="item.itemCount" class="quantity-input" type="text" readonly />
-                      <div class="quantity-input-icon plus" @click="adjustCartCount(item, 1)"></div>
-                    </div>
-                  </div>
-                  <a href="#" class="delete-option" @click="deleteCartItem(item.cartIdx)">삭제</a>
+    <div class="community-container container" data-v-c05eb1ae="">
+      <div class="soomgo-life-container" data-v-0352d1b6="" data-v-c05eb1ae="">
+        <section id="community" class="community" data-v-4b40be3a="" data-v-0352d1b6="">
+          <!-- 헤더 -->
+          <div class="observer-container" data-v-71844fb9="" data-v-74db39ba="" data-v-4b40be3a="">
+            <section data-v-74db39ba="" data-v-71844fb9="" data-observe="community-header" class="community-header" id="community-header">
+                <h1 data-v-74db39ba="" data-v-71844fb9="" data-testid="community-main" class="community-title">장바구니</h1>
+            </section>
+          </div>
+
+          <!-- 바디 -->
+          <div data-v-05cd076e="" data-v-4b40be3a="">
+            <!-- 장바구니 정보 -->
+            <div class="cart-items-container">
+                <div class="cart-total-price-title">
+                  장바구니 정보 
                 </div>
-              </td>
-              <td class="option-price-part option-item-info-padding item-status-checked">
-                <div class="price-area unit-total-price">
-                  <div class="unit-total-sale-price">{{ item.itemPrice * item.itemCount }}원</div>
+                <div data-v-1eaba17a="" class="top-desktop">
+                  <div data-v-47a56272="" data-v-1eaba17a="" class="actions">
+                    <div data-v-47a56272="" class="all-check-wrapper">
+                        <input data-v-47a56272="" id="all-check" disabled="disabled" name="allCheck" type="checkbox" class="all-check">
+                        <label data-v-47a56272="" for="all-check">
+                          <span data-v-47a56272="" class="label-text">전체 선택(0/0)</span>
+                        </label>
+                      </div>
+                    <div data-v-47a56272="" class="delete">선택 항목 삭제</div>
+                  </div>
                 </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="cart-total-price">
-        <div class="cart-total-price__inner">
-          <div class="cart-total-price-title">주문 예상 금액</div>
-          <div class="cart-total-price-item">
-            <div class="cart-total-price-item-title">총 상품 가격</div>
-            <div class="cart-total-price-item-price total-sale-price">
-              <span class="price-panel-price-area">
-                <em class="final-product-price" id="totalProductPrice">{{ totalPrice }}</em>원
-              </span>
+              <table class="cartTable cartTable-v2">
+                <tbody id="cartTable-other" class="cart-bundle-list">
+                  <tr v-for="item in cartItems" :key="item.cartIdx">
+                    <td class="cart-deal-item__image">
+                      <img v-if="item.getPopupGoodsRes.getPopupGoodsImageResList && item.getPopupGoodsRes.getPopupGoodsImageResList.length > 0" 
+                          :src="item.getPopupGoodsRes.getPopupGoodsImageResList[0].imageUrl || '/default_image.jpg'" 
+                          :alt="item.getPopupGoodsRes.productName" 
+                          width="140" 
+                          height="140" />
+                      <img v-else src="/default_image.jpg" alt="Default Image" width="140" height="140" />
+                    </td>
+                    <td class="product-box">
+                      <div class="product-name-part">
+                        <div class="product-name-part-content">
+                          <a href="#" class="moveProduct">
+                            <span v-if="item.getPopupGoodsRes" class="product-name">{{ item.getPopupGoodsRes.productName }}</span>
+                            <span v-else class="product-name">상품명 없음</span>
+                          </a>
+                        </div>
+                        <div class="quantity-input-container">
+                          <div class="quantity-input-content">
+                            <div class="quantity-input-icon minus" @click="adjustCartCount(item, -1)"></div>
+                            <input :value="item.itemCount" class="quantity-input" type="text" readonly />
+                            <div class="quantity-input-icon plus" @click="adjustCartCount(item, 1)"></div>
+                          </div>
+                        </div>
+                        <a href="#" class="delete-option" @click="deleteCartItem(item.cartIdx)">삭제</a>
+                      </div>
+                    </td>
+                    <td class="option-price-part option-item-info-padding item-status-checked">
+                      <div class="price-area unit-total-price">
+                        <div class="unit-total-sale-price">{{ item.itemPrice * item.itemCount }}원</div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-          </div>
-          <div class="cart-total-price-item total-discount total-discount-panel">
-            <div class="cart-total-price-item-title">총 할인</div>
-            <div class="cart-total-price-item-price discount-price">
-              <span id="totalEventDiscount" class="final-sale-area price-panel-price-area">
-                <em class="operator">-</em><em class="final-sale-price" id="totalDiscountPrice">{{ totalDiscount }}</em>원
-              </span>
+            <hr>
+            <!-- 포인트 사용 -->
+            <div class="cart-total-price">
+              <div class="cart-total-price-title">
+                포인트 적용
+                <div class="cart-total-price-item-title">
+                  <label class="coupon-label">
+                    <input type="checkbox" id="couponb6c7ab33-0f31-4568-83d1-0d4c1b831653" name="coupon" class="coupon-chk" value="b6c7ab33-0f31-4568-83d1-0d4c1b831653" v-model="usePoints">
+                    <strong>{{ " " + userPoints }} points</strong>
+                  </label>
+                </div>
+              </div>
+              <div class="faraway-notice">
+                <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png"><strong> 포인트적립 혜택 </strong>: 결제 시 결제 금액의 10% 적립 <span class="faraway-address"></span><br>
+              </div>
             </div>
-          </div>
-          <div class="cart-total-price-item total-delivery-fee">
-            <div class="cart-total-price-item-title">총 배송비</div>
-            <div class="cart-total-price-item-price">
-              <span id="totalDeliveryPrice" class="price-panel-price-area">
-                <em class="operator">+</em>
-                <em class="final-product-price" id="deliveryFee">{{ deliveryFee }}</em>원
-              </span>
-            </div>
-          </div>
-        </div>
-        <div id="finalOrderPrice" class="cart-final-order-price">
-          <span class="default-value">
-            <em class="order-product-price" id="finalOrderPriceValue">{{ finalOrderPrice }}</em>원
-          </span>
-        </div>
-        <div class="order-buttons">
-          <a href="#" class="goPayment narrow" id="btnPay">구매하기<span>&nbsp;(1)</span></a>
-        </div>
-        <div class="user-points">
-          <span>사용자 포인트: </span><span id="userPoints">{{ userPoints }} points</span>
-        </div>
-      </div>
-    </div>
-    <div class="order-table-foot">
-      <span class="all-select-product">
-        <label>
-          <input title="모든 상품을 결제상품으로 설정" type="checkbox" checked="checked" class="all-deal-select">
-          <span>전체선택</span><span class="cart-count-bottom">( <em>1</em> / 1 )</span>
-        </label>
-        <a href="#" class="selected-delete" @click="deleteAllCartItems">전체삭제</a>
-      </span>
-    </div>
-    <div class="download-coupon-area">
-      <div class="coupon-inquire-apply">
-        <div class="coupon-title">
-          <h2 class="title">포인트 적용</h2>
-        </div>
-        <div class="coupon-list">
-          <div class="download-coupon">
-            <dl class="list js-coupon-list" data-coupon-id="b6c7ab33-0f31-4568-83d1-0d4c1b831653" data-available="true" data-wow-only="false">
-              <dt>
-                <label class="coupon-label">
-                  <input type="checkbox" id="couponb6c7ab33-0f31-4568-83d1-0d4c1b831653" name="coupon" class="coupon-chk" value="b6c7ab33-0f31-4568-83d1-0d4c1b831653" v-model="usePoints">
-                  <strong>{{ userPoints }} points</strong>
-                </label>
-                <span class="label none"></span>
-              </dt>
-              <dd>
-                <span class="name">
-                  <strong>고객 포인트</strong>
+            <hr>
+            <!-- 주문예상금액 -->
+            <div class="cart-total-price">
+              <div class="cart-total-price__inner">
+                <div class="cart-total-price-title">주문 예상 금액</div>
+                <div class="cart-total-price-item">
+                  <div class="cart-total-price-item-title">총 상품 가격</div>
+                  <div class="cart-total-price-item-price total-sale-price">
+                    <span class="price-panel-price-area">
+                      <em class="final-product-price" id="totalProductPrice">{{ totalPrice }}</em>원
+                    </span>
+                  </div>
+                </div>
+                <div class="cart-total-price-item total-discount total-discount-panel">
+                  <div class="cart-total-price-item-title">총 할인</div>
+                  <div class="cart-total-price-item-price discount-price">
+                    <span id="totalEventDiscount" class="final-sale-area price-panel-price-area">
+                      <em class="operator">-</em><em class="final-sale-price" id="totalDiscountPrice">{{ totalDiscount }}</em>원
+                    </span>
+                  </div>
+                </div>
+                <div class="cart-total-price-item total-delivery-fee">
+                  <div class="cart-total-price-item-title">총 배송비</div>
+                  <div class="cart-total-price-item-price">
+                    <span id="totalDeliveryPrice" class="price-panel-price-area">
+                      <em class="operator">+</em>
+                      <em class="final-product-price" id="deliveryFee">{{ deliveryFee }}</em>원
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div id="finalOrderPrice" class="cart-final-order-price">
+                <span class="default-value">
+                  <em class="order-product-price" id="finalOrderPriceValue">{{ finalOrderPrice }}</em>원
                 </span>
-              </dd>
-            </dl>
+              </div>
+
+              <div class="user-points">
+                <span>사용자 포인트: </span><span id="userPoints">{{ userPoints }} points</span>
+              </div>
+              <div class="faraway-notice">
+                <strong>도서산간 배송안내 </strong>: 도서산간 추가배송비 발생 시 함께 결제할 수 있습니다. <span class="faraway-address"></span><br>
+              </div>
+            </div>
+            <hr>
+            <div class="order-buttons"> 구매하기 </div>
           </div>
-          
-        </div>
+        </section>
       </div>
-    </div>
-    <div class="payment-reward-cash-area">
-      <img class="payment-reward-cash-area__icon" src="//img1a.coupangcdn.com/image/cart/generalCart/ico_cash_m_2x.png">
-      <h3 class="payment-reward-cash-area__title">포인트적립 혜택</h3>
-      <span class="payment-reward-cash-area__desc"> 결제 시 결제 금액의 10% 적립</span>
-    </div>
-    <div class="faraway-notice">
-      <strong>도서산간 배송안내 </strong>: 도서산간 추가배송비 발생 시 함께 결제할 수 있습니다. <span class="faraway-address"></span><br>
     </div>
   </div>
 </template>
@@ -328,8 +324,11 @@ header .logo a {
 }
 
 .cart-items-container {
-  flex: 1;
-  margin-right: 20px;
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* margin-right: 20px; */
 }
 
 .cartTable {
@@ -463,7 +462,7 @@ header .logo a {
   color: #212b36;
 }
 
-.cart-total-price {
+/* .cart-total-price {
   width: 300px;
   padding: 20px;
   border: 1px solid #ddd;
@@ -471,6 +470,18 @@ header .logo a {
   background-color: #f9f9f9;
   position: sticky;
   top: 20px;
+} */
+.cart-button {
+  width: 5rem;
+  padding: 0.40625rem 0;
+  font-size: 0.875rem;
+  border-radius: 6px;
+  padding: 6.5px 0px;
+  background-color: #00c7aa;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .cart-total-price__inner {
@@ -478,6 +489,8 @@ header .logo a {
 }
 
 .cart-total-price-title {
+  display: flex;
+  justify-content: space-between;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -498,9 +511,6 @@ header .logo a {
 .order-buttons {
   text-align: center;
   margin-top: 20px;
-}
-
-.goPayment {
   background-color: #00c7ae;
   color: #fff;
   padding: 10px 20px;
@@ -539,28 +549,22 @@ header .logo a {
   margin-top: 20px;
 }
 
-.coupon-inquire-apply {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 20px 0;
-}
 
-.coupon-title {
+/* .coupon-title {
   padding: 0 20px;
 }
 
 .coupon-title .title {
   font-size: 18px;
   font-weight: bold;
-}
+} */
 
-.coupon-list {
+/* .coupon-list {
   padding: 0 20px;
-}
+} */
 
 .list {
   padding: 10px 0;
-  border-bottom: 1px solid #ddd;
 }
 
 .list dt {
@@ -588,10 +592,8 @@ header .logo a {
 }
 
 .payment-reward-cash-area__icon {
-  position: absolute;
-  left: 20px;
-  top: 16px;
-  height: 24px;
+  /* position: absolute; */
+  height: 20px;
 }
 
 .payment-reward-cash-area__title {

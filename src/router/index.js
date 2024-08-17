@@ -1,32 +1,33 @@
-import { createRouter, createWebHistory } from "vue-router";
-
-import MainPage from "@/pages/MainPage.vue";
-
 import CompanySignupComponent from "@/components/signup/CompanySignupComponent.vue";
 import CustomerSignupComponent from "@/components/signup/CustomerSignupComponent.vue";
-import CommunityPage from "@/pages/CommunityPage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
 import PaymentPage from "@/pages/PaymentPage.vue";
+import CommunityPage from "@/pages/PostPage.vue";
 import SignupPage from "@/pages/SignupPage.vue";
+import { createRouter, createWebHistory } from "vue-router";
 
-import PostAllComponent from "@/components/community/post-all/PostAllComponent.vue";
-import PostCreateComponent from "@/components/community/post-edit/PostCreateComponent.vue";
 import CartComponent from "@/components/cart/CartComponent.vue";
-import WishPopupPage from "@/pages/WishPopupPage.vue";
-import MypageMainComponent from "@/components/customermypage/MypageMainComponent.vue";
-import PopupGoodsComponent from "@/components/customermypage/PopupGoodsComponent.vue";
-import EditProfileComponent from "@/components/customermypage/EditProfileComponent.vue";
-import MyReviewsComponent from "@/components/customermypage/MyReviewsComponent.vue";
-import CompanyMypageMainComponent from "@/components/companymypage/CompanyMypageMainComponent.vue";
-import ChargeListComponent from "@/components/companymypage/ChargeListComponent.vue";
-import ProductRegisterComponent from "@/components/companymypage/ProductRegisterComponent.vue";
-import PopupRegisterComponent from "@/components/companymypage/PopupRegisterComponent.vue";
-import MainChatComponent from "@/components/chat/MainChatComponent.vue";
+import ChatComponent from "@/components/chat/ChatComponent.vue";
+import EditProfileComponent from "@/components/mypage/EditProfileComponent.vue";
+import FeeHistoryComponent from "@/components/mypage/FeeHistoryComponent.vue";
+import MyReviewsComponent from "@/components/mypage/MyReviewsComponent.vue";
+import OrderHistoryComponent from "@/components/mypage/OrderHistoryComponent.vue";
+import StoreRegisterComponent from "@/components/mypage/StoreRegisterComponent.vue";
+import PostAllComponent from "@/components/post/all/PostAllComponent.vue";
+import PostCreateComponent from "@/components/post/edit/PostCreateComponent.vue";
+import StoreListComponent from "@/components/store/all/StoreListComponent.vue";
+import StroeAllComponent from "@/components/store/all/StroeAllComponent.vue";
+import ChatPage from "@/pages/ChatPage.vue";
+import MyPage from "@/pages/MyPage.vue";
+import WishPage from "@/pages/WishPage.vue";
+
+// 로그인 한사람에게만 허용하는 라우터 미들웨어
+// 역할별로 허용하는 라우터 미들웨어(회원, 고객)
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", component: MainPage },
+    { path: "/", component: StroeAllComponent },
     { path: "/login", component: LoginPage },
     {
       path: "/signup",
@@ -36,47 +37,47 @@ const router = createRouter({
       ],
       component: SignupPage,
     },
+    { path: '/chats', component: ChatComponent },
+    { path: "/wish", component: WishPage },
+    { path: "/payment", component: PaymentPage },
     { path: '/cart', component: CartComponent },
     {
       path: '/mypage',
-      component: MypageMainComponent,
       children: [
-        { path: 'popup', component: PopupGoodsComponent },
-        { path: 'account-edit', component: EditProfileComponent },
-        { path: 'reviews', component: MyReviewsComponent }
-      ]
+          { path: "customer", 
+            children: [
+              { path: 'edit-acoount', component: EditProfileComponent },
+              { path: 'my-reviw', component: MyReviewsComponent },
+              { path: 'order-history', component: OrderHistoryComponent},
+              { path: 'chat', component: ChatPage},
+            ]
+          },
+          { path: "company",
+            children: [
+            { path: 'edit-acoount', component: EditProfileComponent },
+            { path: 'fee-history', component: FeeHistoryComponent },
+            { path: 'popup-register', component: StoreRegisterComponent },
+            { path: 'popup-store', component: StoreListComponent },
+          ]
+          }
+        ],
+      component: MyPage,
     },
     {
-      path: '/managermypage',
-      component: CompanyMypageMainComponent,
-      children: [
-        { path: 'charge', component: ChargeListComponent },
-        { path: 'goods', component: ProductRegisterComponent },
-        { path: 'account-edit', component: EditProfileComponent },
-        { path: 'popup-register', component: PopupRegisterComponent }
-      ]
-    },
-    { path: '/chats', component: MainChatComponent },
-   
-    { path: "/payment", component: PaymentPage },
-    {
-      path: "/community",
+      path: "/post",
       children: [
         { path: "post-all", component: PostAllComponent },
         {
           path: "post-edit",
           children: [
             { path: "create", component: PostCreateComponent },
-            { path: "update/:postIdx", component: CustomerSignupComponent }
+            // { path: "update/:postIdx", component: CustomerSignupComponent }
           ],
         }
       ],
       component: CommunityPage
     },
-    {
-      path: "/wish_popup",
-      component: WishPopupPage
-    }],
+],
 });
 
 export default router;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderComponent :userStatus="userStatus"></HeaderComponent>
+    <HeaderComponent></HeaderComponent>
     <router-view></router-view>
     <FooterComponent></FooterComponent>
   </div>
@@ -13,20 +13,8 @@ import { useMemberStore } from '@/stores/useMemberStore';
 import { mapStores } from 'pinia';
 export default {
   name: 'App',
-  components: {
-    HeaderComponent,
-    FooterComponent,
-  },
-  computed: {
-    ...mapStores(useMemberStore),
-    userStatus(){
-      return  this.memberStore.isLoggedIn;
-    }
-  },
-  mounted(){
-      console.log(this.memberStore.isLoggedIn)
-
-  },
+  components: { HeaderComponent, FooterComponent,},
+  computed: { ...mapStores(useMemberStore),},
 };
 </script>
 

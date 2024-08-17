@@ -1,25 +1,23 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
-import { backend } from "@/const";
+import { backendUrl } from "@/const";
 
 // 전역 저장소 생성
 export const usePopupStore = defineStore("popupstore", {
-  state: () => ({ isLoggedIn: false, dataList: [] }),
-  persist: {
-    storage: sessionStorage,
-  },
+  state: () => ({ 
+    data: [],
+    dataList: [],
+    totalPages: null,
+    totalCount: null
+  }),
   actions: {
     async register(formData) {
       try {
         let response = await axios.post(
-          backend + "/popup-store/register",
+          backendUrl + "/popup-store/register",
           formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          },
+          { headers: { "Content-Type": "multipart/form-data", }, },
           { withCredentials: true }
         );
         console.log(response);
@@ -28,12 +26,20 @@ export const usePopupStore = defineStore("popupstore", {
         return false;
       }
     },
-    async searchAll() {
+    async searchAll(page=0, size = 5) {
       try {
-        let response = await axios.get(backend + "/popup-store/search-all?page=0&size=10");
+        let response = await axios.get(`${backendUrl}/popup-store/search-all?page=${page}&size=${size}`);
         if (response.status === 200) {
-          this.dataList = response.data.result;
-          console.log(this.dataList);
+          const newData = response.data.result.content;
+          if (this.dataList.content) {
+            const existingIds = new Set(this.dataList.content.map(item => item.storeIdx));
+            const filteredData = newData.filter(item => !existingIds.has(item.storeIdx));
+            this.dataList.content = [...this.dataList.content, ...filteredData];
+          } else {
+            this.dataList = response.data.result;
+          }
+          this.totalPage = response.data.result.totalPages;
+          this.totalCount = response.data.result.totalElements;
         } else {
           return false;
         }
@@ -41,6 +47,7 @@ export const usePopupStore = defineStore("popupstore", {
         console.error("Error", error);
         return false;
       }
-    },
+    }
+    
   },
 });

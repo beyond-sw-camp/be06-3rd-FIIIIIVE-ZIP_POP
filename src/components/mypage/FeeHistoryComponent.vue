@@ -37,7 +37,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'ChargeListComponent',
+  name: 'FeeHistoryComponent',
   data() {
     return {
       orders: []

@@ -3,19 +3,11 @@
 </template>
 
 <script>
-import ProductPayComponent from '@/components/payment/ProductPayComponent.vue';
+import ProductPayComponent from '@/components/payment/PayComponent.vue';
 
 export default {
   name: "PaymentPage",
-  data() {
-    return {
-    }
-  },
-  methods: {
-  },
-  components: {
-    ProductPayComponent,
-  },
+  components: { ProductPayComponent, },
 }
 </script>
 

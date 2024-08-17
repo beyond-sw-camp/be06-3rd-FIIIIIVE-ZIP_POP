@@ -1,4 +1,7 @@
 <template>
+        <div id="app-body">
+        <div class="community-container container" data-v-c05eb1ae="">
+            <div class="soomgo-life-container" data-v-0352d1b6="" data-v-c05eb1ae="">
     <section data-v-517e3499="" data-v-0352d1b6="" class="write-post-container">
         <!-- 헤더 버튼 -->
         <div data-v-d87b96c8="" data-v-517e3499="" class="select-subject-header">
@@ -49,6 +52,9 @@
             </div>
         </div>
     </section>
+</div>
+</div>
+</div>
 </template>     
 
 <script>

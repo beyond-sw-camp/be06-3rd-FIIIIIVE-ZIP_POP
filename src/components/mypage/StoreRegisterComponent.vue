@@ -112,22 +112,14 @@ export default {
       imageFile: [],
     };
   },
-  computed: {
-    ...mapStores(usePopupStore)
-  },
+  computed: { ...mapStores(usePopupStore) },
   methods: {
+    onFileChange(event) { this.imageFile.push(event.target.files[0]);},
     async register() {
       const formData = new FormData();
       const jsonBlob = new Blob([JSON.stringify(this.popupStore)], { type: 'application/json' })
-
-      Array.from(this.imageFile).forEach((file) => {
-        formData.append("files", file);
-      })
-
+      Array.from(this.imageFile).forEach((file) => { formData.append("files", file); })
       formData.append("dto", jsonBlob);
-
-      console.log(formData);
-
       try {
         const result = await this.popupstoreStore.register(formData);
         if (result) {
@@ -137,10 +129,6 @@ export default {
         console.error("등록 실패:", error);
       }
     },
-    onFileChange(event) {
-      this.imageFile.push(event.target.files[0]);
-    },
-
   }
 }
 </script>

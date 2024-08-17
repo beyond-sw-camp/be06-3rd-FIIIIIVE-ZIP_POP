@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 8081",
+    "serve": "vue-cli-service serve --port 8081 ",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
@@ -17,6 +17,7 @@
     "pinia": "^2.2.0",
     "pinia-plugin-persistedstate": "^3.2.1",
     "sockjs-client": "^1.6.1",
+    "swiper": "^11.1.9",
     "vue": "^3.2.13",
     "vue-router": "^4.4.1",
     "vue3-toastify": "^0.2.2"

@@ -45,7 +45,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'PopupGoodsComponent',
+  name: 'OrderHistoryComponent',
   data() {
     return {
       orders: []

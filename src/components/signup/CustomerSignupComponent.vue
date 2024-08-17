@@ -29,7 +29,7 @@
                     <div class="css-0">
                         <label for="phone_number" class="css-g3x1x2 et8ys2u0">휴대폰 번호</label>
                         <div class="css-hyxlzm et8ys2u1">
-                            <input v-model="member.phone_number" id="phone_number" class="css-sn3hoi et8ys2u2" placeholder="010-1234-5678" maxlength="13" name="phone_number" >
+                            <input v-model="member.phoneNumber" id="phone_number" class="css-sn3hoi et8ys2u2" placeholder="010-1234-5678" maxlength="13" name="phone_number" >
                         </div>
                     </div>
                     <!-- 주소 -->
@@ -65,12 +65,12 @@ export default {
     data() {
         return { 
             member: {
-                role: 'ROLE_USER',
+                role: 'ROLE_CUSTOMER',
                 name: '',       // 이름
                 email: '',      // 이메일
                 password: '',   // 비밀번호
                 address: '',    // 주소
-                phone_number: ''// 휴대폰 번호
+                phoneNumber: ''// 휴대폰 번호
             }
         };
     },
